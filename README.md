@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Console.log - VSCode
 
 This extension helps you to generate console.log lines with the selected text in the editor,
@@ -27,3 +28,7 @@ Initial release.
 -----------------------------------------------------------------------------------------------------------
 
 ![Zoidberg](./images/zoidberg.jpg)
+=======
+# console-log-vscode
+Generates console.log sentences for javascript documents inside vscode 
+>>>>>>> b39b9b79b719505f0a6cd8bea7142b0cfe4d9f22
