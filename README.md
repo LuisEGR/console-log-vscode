@@ -1,3 +1,5 @@
+![icon](./images/icon.png)
+
 # Console.log - VSCode
 
 This extension helps you to generate console.log lines with the selected text in the editor,
