@@ -1,6 +1,6 @@
 ![icon](./images/icon.png)
 
-[![Version](https://vsmarketplacebadge.apphb.com/version-short/Luis.console-log.svg)](https://marketplace.visualstudio.com/items?itemName=Luis.console-log) [![Version](https://vsmarketplacebadge.apphb.com/installs/Luis.Luis.console-log.svg)](https://marketplace.visualstudio.com/items?itemName=Luis.Luis.console-log)
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/Luis.console-log.svg)](https://marketplace.visualstudio.com/items?itemName=Luis.console-log) [![Version](https://vsmarketplacebadge.apphb.com/installs/Luis.console-log.svg)](https://marketplace.visualstudio.com/items?itemName=Luis.console-log)
 [![apm](https://img.shields.io/apm/l/vim-mode.svg)]()  
 
 
