@@ -11,7 +11,7 @@ function activate(context) {
   let consoleLog = vscode.commands.registerCommand('extension.clog', function(){
     editor = vscode.window.activeTextEditor;
     let lang = editor.document.languageId;
-    if(lang == 'javascript'){
+    if(lang == 'javascript'||lang=='typescript'){
       let selection = editor.selection; 
       let line = editor.document.lineAt(selection.active.line);
       let text = editor.document.getText(selection);
