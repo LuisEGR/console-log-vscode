@@ -18,7 +18,8 @@ function activate(context) {
       let dest = selection.active;
       dest = dest.translate(0, -dest.character);
       let startSpace = ' '.repeat(line.firstNonWhitespaceCharacterIndex);
-      let log = startSpace + `console.log('${text}:', ${text});\n`;
+      let textEsc = JSON.stringify(text+':');
+      let log = startSpace + `console.log(${textEsc}, ${text});\n`;
       editor.edit(editBuilder => {
         editBuilder.insert(dest, log);
       });
