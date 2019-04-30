@@ -2,7 +2,7 @@
     "name": "console-log",
     "displayName": "Console Log",
     "description": "Create console.log lines faster",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "Luis",
     "icon": "images/icon.png",
     "engines": {
@@ -16,20 +16,22 @@
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [{
-          "command": "extension.clog",
-          "title": "Console.log"
-        }],
+        "commands": [
+            {
+                "command": "extension.clog",
+                "title": "Console.log"
+            }
+        ],
         "keybindings": [
-              {
-                  "mac": "alt+-",
-                  "win": "alt+-",
-                  "linux": "alt+-",
-                  "key": "alt+-",
-                  "when": "editorTextFocus",
-                  "command": "extension.clog"
-              }
-          ]
+            {
+                "mac": "alt+-",
+                "win": "alt+-",
+                "linux": "alt+-",
+                "key": "alt+-",
+                "when": "editorTextFocus",
+                "command": "extension.clog"
+            }
+        ]
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
@@ -43,7 +45,7 @@
         "@types/mocha": "^2.2.42"
     },
     "repository": {
-      "type": "git",
-      "url": "https://github.com/LuisEGR/console-log-vscode.git"
+        "type": "git",
+        "url": "https://github.com/LuisEGR/console-log-vscode.git"
     }
 }
