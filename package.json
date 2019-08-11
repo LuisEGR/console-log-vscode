@@ -31,7 +31,31 @@
                 "when": "editorTextFocus",
                 "command": "extension.clog"
             }
-        ]
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Console Log",
+            "properties": {
+                "consoleLog.wrapperExpression": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Expression to call in console log, with the value represented as $. (E.g. JSON.stringify($)).",
+                    "scope": "resource"
+                }
+            }
+        },
+        "configurationAttributes": {
+            "launch": {
+                "required": [],
+                "properties": {
+                    "wrapperExpression": {
+                        "type": "string",
+                        "description": "Expression to call in console log, with the value represented as $. (E.g. JSON.stringify($)).",
+                        "default": ""
+                    }
+                }
+            }
+        }
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",

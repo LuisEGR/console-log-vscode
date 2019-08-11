@@ -12,14 +12,16 @@ function activate(context) {
     editor = vscode.window.activeTextEditor;
     let lang = editor.document.languageId;
     if(lang == 'javascript'||lang=='typescript'){
-      let selection = editor.selection; 
+      let selection = editor.selection;
       let line = editor.document.lineAt(selection.active.line);
       let text = editor.document.getText(selection);
       let dest = selection.active;
       dest = dest.translate(0, -dest.character);
       let startSpace = ' '.repeat(line.firstNonWhitespaceCharacterIndex);
       let textEsc = "'"+JSON.stringify(text+':')+"'";
-      let log = startSpace + `console.log(${textEsc}, ${text});\n`;
+      const { wrapperExpression } = vscode.workspace.getConfiguration('consoleLog');
+      const consoleValue = wrapperExpression ? wrapperExpression.replace('$', text) : text;
+      const log = startSpace + `console.log(${textEsc}, ${consoleValue});\n`;
       editor.edit(editBuilder => {
         editBuilder.insert(dest, log);
       });
