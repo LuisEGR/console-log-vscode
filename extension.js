@@ -4,31 +4,65 @@ let editor;
 // your extension is activated the very first time the command is executed
 function activate(context) {
 
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  console.log('Congratulations,"console-log" is now active!');
+    // Use the console to output diagnostic information (console.log) and errors (console.error)
+    // This line of code will only be executed once when your extension is activated
+    console.log('Congratulations,"console-log" is now active!');
 
-  let consoleLog = vscode.commands.registerCommand('extension.clog', function(){
-    editor = vscode.window.activeTextEditor;
-    let lang = editor.document.languageId;
-    if(lang == 'javascript'||lang=='typescript'){
-      let selection = editor.selection;
-      let line = editor.document.lineAt(selection.active.line);
-      let text = editor.document.getText(selection);
-      let dest = selection.active;
-      dest = dest.translate(0, -dest.character);
-      let startSpace = ' '.repeat(line.firstNonWhitespaceCharacterIndex);
-      let textEsc = "'"+JSON.stringify(text+':')+"'";
-      const { wrapperExpression } = vscode.workspace.getConfiguration('consoleLog');
-      const consoleValue = wrapperExpression ? wrapperExpression.replace('$', text) : text;
-      const log = startSpace + `console.log(${textEsc}, ${consoleValue});\n`;
-      editor.edit(editBuilder => {
-        editBuilder.insert(dest, log);
-      });
+    let consoleLog = vscode.commands.registerCommand('extension.clog', function () {
+        doLog(false);
+    });
+
+    let consoleLogBefore = vscode.commands.registerCommand('extension.clogBefore', function () {
+        doLog(true);
+    });
+
+    function doLog(before) {
+        editor = vscode.window.activeTextEditor;
+        let lang = editor.document.languageId;
+        let supportedLangs = [
+            'javascript',
+            'typescript',
+            'javascriptreact',
+            'typescriptreact'
+        ]
+        if (supportedLangs.includes(lang)) {
+            let selection = editor.selection;
+            let line = editor.document.lineAt(selection.active.line);
+            let text = editor.document.getText(selection);
+            let dest = selection.active;
+            dest = dest.translate(0, -dest.character);
+
+            let startSpace = ' '.repeat(line.firstNonWhitespaceCharacterIndex);
+            let textEsc = '';
+            if (typeof text === 'string') {
+                textEsc = "'" + text.replace(/\'/g, "\\'") + " :'";
+            } else {
+                textEsc = JSON.stringify(text) + ':';
+            }
+            const { wrapperExpression, 
+                invertPosition } = vscode.workspace.getConfiguration('consoleLog');
+            const consoleValue = wrapperExpression ? wrapperExpression.replace('$', text) : text;
+            let log = startSpace + `console.log(${textEsc}, ${consoleValue});`;
+
+            if(invertPosition){
+                before = !before;
+            }
+
+            if (before) {
+                log += '\n'
+            } else {
+                dest = dest.translate(0, line.text.length);
+                log = '\n' + log;
+            }
+            editor.edit(editBuilder => {
+                editBuilder.insert(dest, log);
+            });
+        }
     }
-  });
 
-  context.subscriptions.push(consoleLog);
+    context.subscriptions.push(consoleLog);
+    context.subscriptions.push(consoleLogBefore);
+
 }
 exports.activate = activate;
 

@@ -20,6 +20,10 @@
             {
                 "command": "extension.clog",
                 "title": "Console.log"
+            },
+            {
+                "command": "extension.clogBefore",
+                "title": "Console.log.before"
             }
         ],
         "keybindings": [
@@ -30,6 +34,14 @@
                 "key": "alt+-",
                 "when": "editorTextFocus",
                 "command": "extension.clog"
+            },
+            {
+                "mac": "alt+shift+-",
+                "win": "alt+shift+-",
+                "linux": "alt+shift+-",
+                "key": "alt+shift+-",
+                "when": "editorTextFocus",
+                "command": "extension.clogBefore"
             }
         ],
         "configuration": {
@@ -40,6 +52,12 @@
                     "type": "string",
                     "default": "",
                     "description": "Expression to call in console log, with the value represented as $. (E.g. JSON.stringify($)).",
+                    "scope": "resource"
+                },
+                "consoleLog.invertPosition": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Changes the Keybindings, setting by default the console.log before the current line with option+-",
                     "scope": "resource"
                 }
             }
