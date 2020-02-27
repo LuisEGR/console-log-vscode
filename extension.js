@@ -33,9 +33,10 @@ function activate(context) {
             dest = dest.translate(0, -dest.character);
 
             let startSpace = ' '.repeat(line.firstNonWhitespaceCharacterIndex);
+            const wrapChar = text.match(/\r\n|\r|\n/g) ? "`" : "'"
             let textEsc = '';
             if (typeof text === 'string') {
-                textEsc = "'" + text.replace(/\'/g, "\\'") + " :'";
+                textEsc = wrapChar + text.replace(/\'/g, "\\'") + " :" + wrapChar;
             } else {
                 textEsc = JSON.stringify(text) + ':';
             }
