@@ -58,6 +58,72 @@ function activate(context) {
             editor.edit(editBuilder => {
                 editBuilder.insert(dest, log);
             });
+        } else if (lang == "dart"){
+            let selection = editor.selection;
+            let line = editor.document.lineAt(selection.active.line);
+            let text = editor.document.getText(selection);
+            let dest = selection.active;
+            dest = dest.translate(0, -dest.character);
+
+            let startSpace = ' '.repeat(line.firstNonWhitespaceCharacterIndex);
+            let textEsc = '';
+            if (typeof text === 'string') {
+                textEsc = text.replace(/\'/g, "\\'") + " :" ;
+            } else {
+                textEsc = JSON.stringify(text) + ':';
+            }
+            const { wrapperExpression, 
+                invertPosition } = vscode.workspace.getConfiguration('consoleLog');
+            const consoleValue = wrapperExpression ? wrapperExpression.replace('$', text) : text;
+            let log = startSpace + `print("${textEsc} \${${consoleValue}}");`;
+
+            if(invertPosition){
+                before = !before;
+            }
+
+            if (before) {
+                log += '\n'
+            } else {
+                dest = dest.translate(0, line.text.length);
+                log = '\n' + log;
+            }
+            editor.edit(editBuilder => {
+                editBuilder.insert(dest, log);
+            });
+
+        } else if (lang == "go"){
+            let selection = editor.selection;
+            let line = editor.document.lineAt(selection.active.line);
+            let text = editor.document.getText(selection);
+            let dest = selection.active;
+            dest = dest.translate(0, -dest.character);
+
+            let startSpace = ' '.repeat(line.firstNonWhitespaceCharacterIndex);
+            const wrapChar = text.match(/\r\n|\r|\n/g) ? "`" : "\""
+            let textEsc = '';
+            if (typeof text === 'string') {
+                textEsc = wrapChar + text.replace(/\'/g, "\\'") + " :" + wrapChar;
+            } else {
+                textEsc = JSON.stringify(text) + ':';
+            }
+            const { wrapperExpression, 
+                invertPosition } = vscode.workspace.getConfiguration('consoleLog');
+            const consoleValue = wrapperExpression ? wrapperExpression.replace('$', text) : text;
+            let log = startSpace + `fmt.Println(${textEsc}, ${consoleValue});`;
+
+            if(invertPosition){
+                before = !before;
+            }
+
+            if (before) {
+                log += '\n'
+            } else {
+                dest = dest.translate(0, line.text.length);
+                log = '\n' + log;
+            }
+            editor.edit(editBuilder => {
+                editBuilder.insert(dest, log);
+            });
         }
     }
 
