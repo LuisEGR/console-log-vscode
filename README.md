@@ -26,6 +26,10 @@ Nothing here yet...
 
 ## Release Notes
 
+### 0.0.8
+
+Support for Dart(print) and Go(fmt.Println)
+
 ### 0.0.1
 
 Initial release.
