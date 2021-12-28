@@ -75,7 +75,7 @@ function activate(context) {
             const { wrapperExpression, 
                 invertPosition } = vscode.workspace.getConfiguration('consoleLog');
             const consoleValue = wrapperExpression ? wrapperExpression.replace('$', text) : text;
-            let log = startSpace + `print("${textEsc} \${${consoleValue}}");`;
+            let log = startSpace + `debugPrint("${textEsc} \${${consoleValue}}", wrapWidth: 1024);`;
 
             if(invertPosition){
                 before = !before;
