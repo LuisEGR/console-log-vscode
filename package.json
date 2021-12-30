@@ -2,7 +2,7 @@
     "name": "console-log",
     "displayName": "Console Log",
     "description": "Create console.log lines faster",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "publisher": "Luis",
     "icon": "images/icon.png",
     "engines": {
