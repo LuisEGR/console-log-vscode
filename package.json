@@ -42,6 +42,22 @@
                 "key": "alt+shift+-",
                 "when": "editorTextFocus",
                 "command": "extension.clogBefore"
+            },
+            {
+                "mac": "alt+/",
+                "win": "alt+/",
+                "linux": "alt+/",
+                "key": "alt+/",
+                "when": "editorTextFocus",
+                "command": "extension.clog"
+            },
+            {
+                "mac": "alt+shift+/",
+                "win": "alt+shift+/",
+                "linux": "alt+shift+/",
+                "key": "alt+shift+/",
+                "when": "editorTextFocus",
+                "command": "extension.clogBefore"
             }
         ],
         "configuration": {
