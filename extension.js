@@ -23,7 +23,8 @@ function activate(context) {
             'javascript',
             'typescript',
             'javascriptreact',
-            'typescriptreact'
+            'typescriptreact',
+            'vue'
         ]
         if (supportedLangs.includes(lang)) {
             let selection = editor.selection;
