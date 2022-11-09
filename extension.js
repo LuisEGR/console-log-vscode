@@ -98,18 +98,21 @@ function activate(context) {
             let dest = selection.active;
             dest = dest.translate(0, -dest.character);
 
-            let startSpace = ' '.repeat(line.firstNonWhitespaceCharacterIndex);
-            const wrapChar = text.match(/\r\n|\r|\n/g) ? "`" : "\""
+            let startSpace = '\t'.repeat(line.firstNonWhitespaceCharacterIndex);
+            const wrapChar = "\""
+            // const wrapChar = text.match(/\r\n|\r|\n/g) ? "`" : "\""
             let textEsc = '';
             if (typeof text === 'string') {
-                textEsc = wrapChar + text.replace(/\'/g, "\\'") + " :" + wrapChar;
-            } else {
+                textEsc = text.replace(/\"/g, '\\"')
+                textEsc = textEsc.replace(/\'/g, "\\'")
+                textEsc = wrapChar + textEsc + ": %#v"  + "\\n" + wrapChar;
+            } else { 
                 textEsc = JSON.stringify(text) + ':';
             }
             const { wrapperExpression, 
                 invertPosition } = vscode.workspace.getConfiguration('consoleLog');
             const consoleValue = wrapperExpression ? wrapperExpression.replace('$', text) : text;
-            let log = startSpace + `fmt.Println(${textEsc}, ${consoleValue});`;
+            let log = startSpace + `fmt.Printf(${textEsc}, ${consoleValue})`;
 
             if(invertPosition){
                 before = !before;
