@@ -31,7 +31,7 @@ you can use also the keybinding ```[ alt + - ]``` or ```[ alt + / ]``` in Window
 
 Example outputs:
 
-**javascript / typescript**
+**javascript / typescript / vue**
 ```javascript
 let enabled = true;
 // press [ ⌥ + - ] or [ ⌥ + / ] selecting 'enabled' will produce ↓↓↓
@@ -50,7 +50,7 @@ debugPrint("${enabled}}", wrapWidth: 1024);
 ```go
 enabled := true;
 // press [ ⌥ + - ] or [ ⌥ + / ] selecting 'enabled' will produce ↓↓↓
-fmt.Println('enabled', enabled);
+fmt.Printf("enabled: %#v", enabled);
 ```
 
 ### Console log before:
