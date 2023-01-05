@@ -24,7 +24,8 @@ function activate(context) {
             'typescript',
             'javascriptreact',
             'typescriptreact',
-            'vue'
+            'vue',
+            'solidity'
         ]
         if (supportedLangs.includes(lang)) {
             let selection = editor.selection;
