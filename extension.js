@@ -32,6 +32,7 @@ function activate(context) {
       "typescriptreact",
       "vue",
       "svelte",
+      "solidity",
     ];
     if (supportedLangs.includes(lang)) {
       let selection = editor.selection;
