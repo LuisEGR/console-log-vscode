@@ -1,9 +1,7 @@
-![logo](./images/consolelogvscode.png)  
+![logo](./images/consolelogvscode.png)
 
-
-[![Version](https://vsmarketplacebadge.apphb.com/version-short/Luis.console-log.svg)](https://marketplace.visualstudio.com/items?itemName=Luis.console-log) [![Version](https://vsmarketplacebadge.apphb.com/installs/Luis.console-log.svg)](https://marketplace.visualstudio.com/items?itemName=Luis.console-log)
-[![apm](https://img.shields.io/apm/l/vim-mode.svg)]()  
-
+[![Version](https://vsmarketplacebadges.dev/version-short/Luis.console-log.svg)](https://marketplace.visualstudio.com/items?itemName=Luis.console-log) [![Version](https://vsmarketplacebadges.dev/downloads-short/Luis.console-log.svg)](https://marketplace.visualstudio.com/items?itemName=Luis.console-log)
+[![apm](https://img.shields.io/github/license/LuisEGR/console-log-vscode)]()
 
 # Console.log - VSCode
 
@@ -14,39 +12,39 @@ very useful for every javascript developer (now with support for Dart and Go).
 
 ![Console.log](./images/console_log_demo.gif)
 
-English             |  Spanish
-:-------------------------:|:-------------------------:
-![](./images/english_keyboard.jpg)  |  ![](./images/spanish_keyboard.jpg)
+|              English               |              Spanish               |
+| :--------------------------------: | :--------------------------------: |
+| ![](./images/english_keyboard.jpg) | ![](./images/spanish_keyboard.jpg) |
 
-running the command ```Console.log``` will generate a console.log sentence in the line above, taking care of identation.
-you can use also the keybinding ```[ alt + - ]``` or ```[ alt + / ]``` in Windows, Linux and MacOSX
-
-
+running the command `Console.log` will generate a console.log sentence in the line above, taking care of identation.
+you can use also the keybinding `[ alt + - ]` or `[ alt + / ]` in Windows, Linux and MacOSX
 
 ## Supported languages:
 
-![Supported languages](./images/consolelog-langs.png)  
+![Supported languages](./images/consolelog-langs.png)
 
 ### Console log after (default):
 
 Example outputs:
 
-**javascript / typescript / vue**
+**javascript / typescript / vue / svelte**
+
 ```javascript
 let enabled = true;
 // press [ ⌥ + - ] or [ ⌥ + / ] selecting 'enabled' will produce ↓↓↓
-console.log('enabled :', enabled);
+console.log("enabled :", enabled);
 ```
 
 **dart**
+
 ```dart
 bool enabled = true;
 // press [ ⌥ + - ] or [ ⌥ + / ] selecting 'enabled' will produce ↓↓↓
 debugPrint("${enabled}}", wrapWidth: 1024);
 ```
 
-
 **go**
+
 ```go
 enabled := true;
 // press [ ⌥ + - ] or [ ⌥ + / ] selecting 'enabled' will produce ↓↓↓
@@ -57,13 +55,13 @@ fmt.Printf("enabled: %#v", enabled);
 
 If you want your log in the line before and not after, just add shift:
 
-**javascript / typescript**
+**javascript / typescript / vue / svelte**
+
 ```javascript
-console.log('enabled :', enabled);
+console.log("enabled :", enabled);
 // press [ ⌥ + - + ⇧ ] or [ ⌥ + / + ⇧ ] selecting 'enabled' will produce ↑↑↑
 let enabled = true;
 ```
-
 
 ## Release Notes
 
@@ -75,7 +73,6 @@ Support for Dart(print) and Go(fmt.Println)
 
 Initial release.
 
-
------------------------------------------------------------------------------------------------------------
+---
 
 ![Zoidberg](./images/zoidberg.jpg)
